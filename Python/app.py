@@ -1,38 +1,16 @@
 
-file_name = "../Dataset/books.txt"
+import add_books
+import view_books
 
 
-class Library:
-    
-    def __init__(self):
-        print("Welcone to Library")
-    
-    def add(self, book):
-        with open(file_name, 'r') as file:
-            global books
-            books = [line.strip() for line in file]
-        books.append(book)
-        with open(file_name, 'w') as file:
-            for b in books:
-                file.write(b + "\n")
-        
-
-
-    
-    def display(self):
-       with open(file_name, 'r') as file:
-           books = [line.strip() for line in file]
-           print(f"Books are : {books}")
-
-
+file_name = "../Dataset/books.csv"
 
 menu = {
-    0: "Exti",
+    0: "Exit",
     1: "Add",
     2: "View",    
 }
 
-ob = Library()
 
 while True:
     for key, value in menu.items():
@@ -43,9 +21,8 @@ while True:
     if key == 0:
         exit()
     if key == 1:
-        book = input("Book name : ")
-        ob.add(book)
+        add_books.AddBooks(file_name)
     elif key == 2:
-        ob.display()
+        view_books.ViewBooks(file_name)
     else:
         print("Invalid Input") 
